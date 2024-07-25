@@ -11,13 +11,17 @@
                 Console.WriteLine("ConsoleCheckEAN \n");
 
                 long ean = 0;
-                while (ean <= 0) {
+                bool validInput = false;
+                while (!validInput) {
                     try {
                         Console.Write("Bitte geben Sie eine EAN ein: ");
                         //ean = Convert.ToInt64(Console.ReadLine());
                         ean = long.Parse(Console.ReadLine());
+
                         if (ean <= 0 || ean.ToString().Length > 13) {
                             ShowInputErrorMessage();
+                        } else {
+                            validInput = true;
                         }
                     } catch {
                         ShowInputErrorMessage();
